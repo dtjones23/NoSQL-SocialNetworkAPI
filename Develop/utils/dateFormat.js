@@ -1,1 +1,1 @@
-// seed data for users and thoughts
+// will feature code for timestamp
