@@ -1,1 +1,3 @@
 // Thoughts model
+
+// Reactions schema
