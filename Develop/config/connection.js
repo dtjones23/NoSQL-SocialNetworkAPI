@@ -1,0 +1,1 @@
+// Uses the mongoose library to establish a connection to a MongoDB database.
