@@ -1,4 +1,4 @@
-const { User, Thought } = require('../models');
+const { User } = require('../models');
 
 module.exports = {
     // get all users
@@ -12,7 +12,7 @@ module.exports = {
     },
 
     // get user _id
-    async findUserById(req, res) {
+    async getUserById(req, res) {
         try {
             const oneUser = await User.findOne({ _id: req.params.id })
                 .populate({
