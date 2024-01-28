@@ -38,7 +38,11 @@ In insomnia the user will input GET, POST, PUT, and DELETE methods to view and m
 
 ## Test 
 Here is a walkthrough demonstrating how to use all the METHODS:
-- INSERT WALKTHROUGH VIDEO LINK HERE
+- 
+
+https://github.com/dtjones23/NoSQL-SocialNetworkAPI/assets/142169871/706c8645-b280-499d-a5b1-ef3e6a024378
+
+
 
 ## License
 No licenses were used.
