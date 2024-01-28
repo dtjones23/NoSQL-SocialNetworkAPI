@@ -20,22 +20,21 @@ const reactionSchema = new Schema(
             required: true
         },
 
-        // createdAt: {
-        //     type: Date,
-        //     required: true,
-        //     default: Date.now(),
-        //     get: function () {
-        //         return moment(this.createdAt).format('MMMM Do YYYY, h:mm:ss a'); // using moment.js to format timestamp on query
-        //     }
-        // },
-},
-{
-    toJSON: {
-        virtuals: true,
-        getters: true
+        createdAt: {
+            type: Date,
+            required: true,
+            default: Date.now(),
+            get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a') // using moment.js to format timestamp on query
+        }
     },
-    id: false
-}
+
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        },
+        id: false
+    }
 
 )
 
@@ -47,28 +46,24 @@ const thoughtSchema = new Schema(
             required: true,
             maxlength: 280
         },
-
         createdAt: {
             type: Date,
             required: true,
             default: Date.now(),
-            // get: function () {
-            //     return moment(this.createdAt).format('MMMM Do YYYY, h:mm:ss a');
-            // }
+            get: createdAtVal => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
         },
-
         userName: { // refers to user that created thought
             type: String,
             required: true
         },
-        reactions: [reactionSchema],
+        reactions: [reactionSchema]
     },
     {
         toJSON: {
             virtuals: true,
-            getters: true,
+            getters: true
         },
-        id: false,
+        id: false
     }
 );
 
