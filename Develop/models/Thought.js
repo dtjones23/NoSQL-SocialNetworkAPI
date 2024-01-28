@@ -1,5 +1,6 @@
 // Thoughts model
 const { Schema, model, Types } = require('mongoose');
+const moment = require('moment');
 
 const reactionSchema = new Schema(
     {
@@ -7,25 +8,35 @@ const reactionSchema = new Schema(
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId(),
         },
-        
+
         reactionBody: {
             type: String,
             required: true,
             maxlength: 280
         },
 
-        username: {
+        userName: {
             type: String,
             required: true
         },
 
-        createdAt: {
-            type: Date,
-            required: true,
-            default: Date.now(),
-            get: () => dateFormat()// need to format timestamp on query!!!
-        }
-    }
+        // createdAt: {
+        //     type: Date,
+        //     required: true,
+        //     default: Date.now(),
+        //     get: function () {
+        //         return moment(this.createdAt).format('MMMM Do YYYY, h:mm:ss a'); // using moment.js to format timestamp on query
+        //     }
+        // },
+},
+{
+    toJSON: {
+        virtuals: true,
+        getters: true
+    },
+    id: false
+}
+
 )
 
 // Schema to create a Thought model
@@ -41,10 +52,12 @@ const thoughtSchema = new Schema(
             type: Date,
             required: true,
             default: Date.now(),
-            get: () => dateFormat()// need to format timestamp on query!!! , should be a function in '()'
+            // get: function () {
+            //     return moment(this.createdAt).format('MMMM Do YYYY, h:mm:ss a');
+            // }
         },
 
-        username: { // refers to user that created thought
+        userName: { // refers to user that created thought
             type: String,
             required: true
         },
